@@ -141,7 +141,8 @@ export default {
 
                  
             }, response => {
-                this.loading = 2;
+          //      this.loading = 2;
+                this.load();
             });
 
 

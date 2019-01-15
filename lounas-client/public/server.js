@@ -5,7 +5,14 @@ const connect = require('connect')
 const serveStatic = require('serve-static')
 
 var app = connect()
+	.use(function(res,req,next) {
+		
+		if(res.url != '/server.js') {
+			next();	
+		}
+		
+	})
     .use(serveStatic('./'))
-    .listen(PORT)
+	.listen(PORT);
 
 console.log('listening: '+PORT);

@@ -115,8 +115,6 @@ export default {
             
              this.$http.get('factory').then(response => {
 
-                 
-
                 if(response.bodyText == 'loading') {
 
                     setTimeout(()=> {
@@ -138,7 +136,8 @@ export default {
                 }
                  
             }, response => {
-                this.loading = 2;
+           //     this.loading = 2;
+                this.load();
             });
 
 
