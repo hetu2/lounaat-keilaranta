@@ -1,9 +1,8 @@
 <template>
   <div
-    v-if="loading!=2"
     id="letsplay"
     class="menu"
-    :class="{loading: loading}"
+    :class="{loading: loading, smallLoader: loading == 2}"
   >
     <h2 class="menutitle">
       Let’s Play 
@@ -47,6 +46,9 @@
 <script>
 export default {
     name: 'Letsplay',
+    props: {
+        date: String,
+    },
     data:  function () {
         return {
             loading: 1,
@@ -115,9 +117,18 @@ export default {
         },
 
         load() {
-            console.log('Loading letsplay');
+            console.log('Loading '+this.$options.name);
             
-            this.loading = 1;
+
+            if(this.date == localStorage[this.$options.name+'-date']) {
+     
+                this.menu = JSON.parse(localStorage[this.$options.name]);
+                this.url = localStorage[this.$options.name+'-url']
+                this.loading = 2;
+            }
+            else {
+                this.loading = 1;
+            }
 
              this.$http.get('letsplay').then(response => {
 
@@ -136,6 +147,8 @@ export default {
                 else {
 
                     this.menu = response.body
+                    localStorage.setItem(this.$options.name,JSON.stringify(this.menu))
+                    localStorage.setItem(this.$options.name+'-date',this.date)
         
                     this.loading = 0;
 
@@ -153,7 +166,8 @@ export default {
 
             this.$http.get('letsplay/link').then(response => {
 
-                this.url = response.body
+                this.url = response.body;
+                localStorage.setItem(this.$options.name+'-url',response.body)
                  
             }, response => {
             });

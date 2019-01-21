@@ -15,10 +15,10 @@ let nightmareOptions = {
 
 
 
-console.log('versio 2019-01-11-4');
+console.log('versio 2019-01-18-1');
 
 function cachePut(id,val) {
-    cache.put(id, val, 120000); // Time in ms
+    cache.put(id, val, 600000); // Time in ms
 }
 
 let xObj = {}
@@ -50,7 +50,15 @@ const PORT = process.env.PORT || 1234; // heroku uses env.PORT
 
 let app = express();
 
-var whitelist = ['http://localhost:8080', 'https://lounaat-keilaranta.herokuapp.com', 'http://lounaat-keilaranta.herokuapp.com']
+var whitelist = [
+    'http://localhost:8080', 
+    'https://lounaat-keilaranta.herokuapp.com', 
+    'http://lounaat-keilaranta.herokuapp.com', 
+    'https://lounaat-keilaranta.azurewebsites.net', 
+    'http://lounaat-keilaranta.azurewebsites.net',
+    'https://lounaat-keilaranta-api.azurewebsites.net', 
+    'http://lounaat-keilaranta-api.azurewebsites.net'
+]
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {

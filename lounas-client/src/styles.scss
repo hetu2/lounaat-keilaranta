@@ -111,6 +111,56 @@ h1,h2,h3,h4,p {
 
 
 
+
+.menu {
+    margin-bottom: 20px;
+    position: relative;
+  
+    .content {
+      background: #eee;
+      width: 100%;
+      padding: 10px;
+      position: relative;
+      z-index: 2;
+      opacity: 1;
+      transition: opacity 0.5s;
+  
+      min-height: 60px;
+  
+    }
+  
+    &.loading {
+      .content {
+        opacity: 0;
+      }
+      &.smallLoader {
+        &:after {
+            z-index: 2;
+            left: auto;
+            right: 5px;
+            top: 65px;
+                
+            width: 25px;
+            height: 25px;
+            @media only screen and (max-width: $mobile) {
+        
+                top: 60px;
+                      
+              }
+        }
+          .content {
+            opacity: 1;
+          }
+      }
+    }
+  }
+  
+  .menu h2 {
+    margin-bottom: 10px;
+    padding-right: 30px;
+  }
+  
+
 .loading {
     &:after {
       display: block;

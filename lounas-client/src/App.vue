@@ -4,11 +4,11 @@
       Lounaat Keilaranta - {{ date }}
     </h1>
     <div id="menus">
-      <LSC />
-      <letsplay />
-      <factory />
+      <LSC v-bind:date="date"/>
+      <letsplay v-bind:date="date" />
+      <factory v-bind:date="date" />
     </div>
-    <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    <p><small>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></small> - <small>Site use <a href="https://www.w3schools.com/HTML/html5_webstorage.asp" target="_blank">localStorage</a> to improve service</small></p>
   </div>
 </template>
 
@@ -34,6 +34,7 @@ export default {
         return `${day}.${month}.${year}`;
     }
   },
+  
 }
 </script>
 
@@ -46,37 +47,6 @@ export default {
     border-bottom: 1px solid rgba(0,0,0,0.1)
 
   }
-
-
-
-.menu {
-  margin-bottom: 20px;
-  position: relative;
-
-  .content {
-    background: #eee;
-    width: 100%;
-    padding: 10px;
-    position: relative;
-    z-index: 2;
-    opacity: 1;
-    transition: opacity 0.5s;
-
-    min-height: 60px;
-
-  }
-
-  &.loading {
-    .content {
-      opacity: 0;
-    }
-  }
-}
-
-.menu h2 {
-  margin-bottom: 10px;
-  padding-right: 30px;
-}
 
 
 
